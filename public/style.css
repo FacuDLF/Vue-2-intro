@@ -12,6 +12,7 @@
 
 .product {
   display: flex;
+  flex-flow: row;
   padding: 1rem;
 }
 
