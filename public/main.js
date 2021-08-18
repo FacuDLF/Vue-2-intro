@@ -4,6 +4,6 @@ var app = new Vue({
         product: 'Socks',
         image: 'assets/greenSocks.jpg',
         inventory: 8,
-        /*inStock: 'true'*/
+        details: ["80% cotton", "20% polyester", "Gender neutral"]
     }
 })
