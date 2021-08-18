@@ -18,7 +18,7 @@ props: {
         <p v-if="inventory">In Stock</p>
         <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p>
         <p v-else>Out of Stock</p>
-        <p>Shipping cost: {{ shipping }}</p>
+        <p>Shipping Cost: {{ shipping }}</p>
         
         <ul>
             <li v-for="detail in details">{{ detail }}</li>
@@ -34,10 +34,6 @@ props: {
         <button v-on:click="addToCart" 
         :disabled="!inventory"
         :class="{ disabledButton: !inventory }">Add to Cart</button>
-
-        <div class="cart">
-            <p>Cart{{cart}}</p>
-        </div>
         
     </div>
 
@@ -63,12 +59,11 @@ props: {
                     variantQuantity: 0
                 }
             ],
-            cart: 0 
         }
     },
     methods: {
         addToCart() {
-            this.cart += 1
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
         },
         updateProduct(index) {
             this.selectedVariant = index
@@ -97,6 +92,12 @@ props: {
 var app = new Vue({
     el: '#app',
     data: {
-        premium: true
+        premium: true,
+        cart: []
+    },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id)
+        }
     }
 })
