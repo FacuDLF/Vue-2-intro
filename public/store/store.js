@@ -1,43 +1,5 @@
 var eventBus = new Vue()
 
-const store = new.VuexStore({
-    el: '#app',
-    state: {
-        product: [{
-            variantId:{ 2234},
-            variantColor: {'green'},
-            variantImage: {'assets/greenSocks.jpg'},
-            variantQuantity: 10,
-            brand: 'Vue Mastery',
-            product: 'Socks',
-            selectedVariant: 0,
-            details: {"80% cotton", "20% polyester", "Gender neutral"},
-            shipping: 0
-        },
-        { variantId: 2235,
-            variantColor: {'blue'},
-            variantImage: {'assets/blueSocks.jpg'},
-            variantQuantity: 0,
-            brand: 'Vue Mastery',
-            product: 'Socks',
-            selectedVariant: 0,
-            details: {"80% cotton", "20% polyester", "Gender neutral"},
-            shipping: 2.99
-        }],
-        premium: true,
-        cart: []
-    },
-    mutations: {
-        
-    },
-    actions: {
-        
-    },
-    getters: {
-
-    }
-})
-
 Vue.component('product', {
 props: {
     premium: {
@@ -58,7 +20,7 @@ props: {
         <p v-if="inventory">In Stock</p>
         <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p>
         <p v-else>Out of Stock</p>
-        <p>Shipping Cost: {{ $store.state.product.shipping }}</p>
+        <p>Shipping Cost: {{ shipping }}</p>
         
         <ul>
             <li v-for="detail in details">{{ detail }}</li>
