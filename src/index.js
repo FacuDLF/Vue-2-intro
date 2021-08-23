@@ -30,7 +30,7 @@ const store = new Vuex.Store({
         premium: true,
         cart: 0,
         productReviews: [],
-        errors: [],
+        errors: ['name', 'review', 'rating'],
         tabs: ['Reviews', 'Make a Review'],
         selectedTab: 'Reviews'
     },
@@ -41,8 +41,14 @@ const store = new Vuex.Store({
         PUSH_PRODUCT_REVIEW(state, value) {
             state.productReviews.push(value);
         },
-        PUSH_ERROR(state, value) {
-            state.errors.push(value);
+        PUSH_ERROR_NAME(state, value) {
+            state.errors.name.push(value);
+        },
+        PUSH_ERROR_REVIEW(state, value) {
+            state.errors.review.push(value);
+        },
+        PUSH_ERROR_RATING(state, value) {
+            state.errors.rating.push(value);
         },
         SET_ERRORS(state, value) {
             state.errors = value;
@@ -59,23 +65,24 @@ const store = new Vuex.Store({
         },
         SUBMIT_REVIEW({commit}, review) {
             if(!this.name) {
-                commit("PUSH_ERROR", "Name required.")
+                commit("PUSH_ERROR_NAME", "Name required.")
 
             }
             if(!this.review) {
-                commit("PUSH_ERROR", "Review required.")
+                commit("PUSH_ERROR_REVIEW", "Review required.")
 
             }
             if(!this.rating) {
-                commit("PUSH_ERROR", "Rating required.")
+                commit("PUSH_ERROR_RATING", "Rating required.")
 
             }
             if(review.name && review.rating && review.review) {
                 commit('PUSH_PRODUCT_REVIEW', review);
-                commit('SET_ERRORS', []);
             }
+            commit('SET_ERRORS', [])
+        },
     },
 },
-});
+);
 
 export default store;
