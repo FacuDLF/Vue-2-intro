@@ -30,7 +30,11 @@
         </p>
         
         <p>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" 
+            v-if="{name,review,rating}.length !== 0"
+            :disabled="{name,review,rating}.length === 0"
+            :class="[{disabledButton}]"
+            >
         </p>    
 
     </form>
@@ -52,6 +56,7 @@ const Components = Vue.extend ({
     computed: ({
         ...mapState({
             errors: state => state.errors,
+            productReviews: state => state.productReviews
         })
     }),
     methods: {
@@ -88,5 +93,16 @@ input {
 textarea {
   width: 100%;
   height: 60px;
+}
+.disabledButton {
+    border: 0px solid black;
+    background-color: whitesmoke;
+    color: grey;
+}
+.disabledButton:hover {
+    border: 0px solid black;
+    background-color: whitesmoke;
+    color: grey;
+    cursor: not-allowed;
 }
 </style>

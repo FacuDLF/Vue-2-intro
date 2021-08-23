@@ -30,7 +30,9 @@ const store = new Vuex.Store({
         premium: true,
         cart: 0,
         productReviews: [],
-        errors: []
+        errors: [],
+        tabs: ['Reviews', 'Make a Review'],
+        selectedTab: 'Reviews'
     },
     mutations: {
         SET_CART(state, value) {
@@ -58,12 +60,15 @@ const store = new Vuex.Store({
         SUBMIT_REVIEW({commit}, review) {
             if(!this.name) {
                 commit("PUSH_ERROR", "Name required.")
+
             }
             if(!this.review) {
                 commit("PUSH_ERROR", "Review required.")
+
             }
             if(!this.rating) {
                 commit("PUSH_ERROR", "Rating required.")
+
             }
             if(review.name && review.rating && review.review) {
                 commit('PUSH_PRODUCT_REVIEW', review);

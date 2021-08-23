@@ -6,24 +6,29 @@
         :key="index"
         @click="selectedTab = tab"
         >
-        {{ tabs }}
+        {{ tab }}
         </span>
 
-        <div v-show="selectedTab === 'Reviews'">
-            <p v-if="!reviews.length">There are no reviews yet.</p> 
-            <ul>
-                <li v-for="(review, index) in reviews" :key="index">
-                    <p>{{ review.name }}</p>
-                    <p>{{ review.review }}</p>
-                    <p>Rating: {{ review.rating }}</p>
-                </li>
-            </ul>
-        </div>
+        <product-tabs> 
+            <div v-show="selectedTab === 'Reviews'">
+                <p v-if="!reviews">There are no reviews yet.</p> 
+                    <ul>
+                        <li v-for="(reviews, index) in reviews" 
+                            :key="index">
+                            <p>{{ reviews.name }}</p>
+                            <p>{{ reviews.review }}</p>
+                            <p>Rating: {{ reviews.rating }}</p>
+                        </li>
+                    </ul>
+            </div>
 
-        <product-tabs></product-tabs>
-
-        <product-review  v-show="selectedTab === 'Make a Review'" >
-        </product-review>
+            <product-review  v-show="selectedTab === 'Make a Review'" >
+                <p>
+                Make a Review
+                </p>
+            </product-review>
+            
+        </product-tabs>
     </div>
 </template>
 
@@ -33,6 +38,18 @@ import {mapState} from 'vuex';
 
 const Components = Vue.extend ({
     name: 'Tabs',
+    data() {
+        return {
+            tabs: ['Reviews', 'Make a Review'],
+            selectedTab: 'Reviews'
+        }
+    },
+    props: {
+        reviews: {
+            type: Array,
+            required: true
+        }
+    },
     computed: {
         ...mapState ({
             name: state => state.name,
