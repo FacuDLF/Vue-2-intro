@@ -1,25 +1,4 @@
-# vueshop
-
-## Project setup
+# App running at:
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# VueX
+  - Local:   http://localhost:8080/
+  - Network: http://172.31.172.119:8080/
