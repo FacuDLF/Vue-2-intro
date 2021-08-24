@@ -28,5 +28,5 @@ body {
   font-family: tahoma;
   color:#282828;
   margin: 0px;
-}
+  }
 </style>

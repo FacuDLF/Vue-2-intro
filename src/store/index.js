@@ -69,6 +69,7 @@ const store = new Vuex.Store({
                 commit('PUSH_PRODUCT_REVIEW', review);
                 commit('SET_ERRORS', []);
             }
+            
     },
 },
 });

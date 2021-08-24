@@ -10,14 +10,14 @@
         </span>
 
         <product-tabs> 
-            <div v-show="selectedTab === 'Reviews'">
+            <div v-show="selectedTab === 'Reviews'" >
                 <p v-if="!reviews">There are no reviews yet.</p> 
-                    <ul>
-                        <li v-for="(reviews, index) in reviews" 
+                    <ul class="reviewsList">
+                        <li v-for="(productReviews, index) in productReviews" 
                             :key="index">
-                            <p>{{ reviews.name }}</p>
-                            <p>{{ reviews.review }}</p>
-                            <p>Rating: {{ reviews.rating }}</p>
+                            <p>{{ productReviews.name }}</p>
+                            <p>{{ productReviews.review }}</p>
+                            <p>Rating: {{ productReviews.rating }}</p>
                         </li>
                     </ul>
             </div>
@@ -41,20 +41,19 @@ const Components = Vue.extend ({
     data() {
         return {
             tabs: ['Reviews', 'Make a Review'],
-            selectedTab: 'Reviews'
+            selectedTab: 'Make a Review'    
         }
     },
+    //Props se usa igual, así o va en el State
     props: {
         reviews: {
             type: Array,
             required: true
         }
-    },
+    }, 
     computed: {
         ...mapState ({
-            name: state => state.name,
-            review: state => state.review,
-            rating: state => state.rating 
+            productReviews: state => state.productReviews
         })
     }
 });
@@ -67,10 +66,11 @@ export default Components
 .tab {
   margin-left: 20px;
   cursor: pointer;
-}
+};
 
 .activeTab {
   color: #16C0B0;
   text-decoration: underline;
-}
+};
+
 </style>

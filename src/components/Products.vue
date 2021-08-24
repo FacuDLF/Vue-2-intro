@@ -20,7 +20,7 @@
                 :style="{ backgroundColor: variant.variantColor }"
                 @mouseover="updateProduct(index)">
             </div>
-
+            <ToDoList />
             <AddToCartButton /> <RemoveFromCart />
             <Tabs />
             <Reviews />
@@ -35,6 +35,7 @@ import RemoveFromCart from './RemoveFromCart';
 import Cart from './Cart.vue';
 import Reviews from './ProductsReviews.vue';
 import Tabs from './ProductsTabs.vue';
+import ToDoList from './ToDoList.vue';
 
 const Components = Vue.extend ({
   name: 'Products',
@@ -85,6 +86,7 @@ const Components = Vue.extend ({
         }
     },
     components: {
+        ToDoList,
         AddToCartButton,
         RemoveFromCart,
         Cart,
